@@ -6,17 +6,18 @@ public class CupBahavior : MonoBehaviour
 {
     [SerializeField] private Transform liquid;
     [SerializeField] private float fillSpeed;
-    private Touchscreen touch = Touchscreen.current;
-    // private Gyroscope gyro = Gyroscope.current;
+    
+    private InputAction interactAction;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
+        interactAction = InputSystem.actions.FindAction("Interact");
         liquid = transform.Find("Liquid");
     }
 
     // Update is called once per frame
     void Update() {
-        if(touch.primaryTouch.press.isPressed){
+        if(interactAction.IsPressed()){
             liquid.transform.Translate(Vector2.up * fillSpeed * Time.deltaTime);
         }
     }
