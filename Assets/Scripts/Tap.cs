@@ -12,10 +12,10 @@ public class Tap : MonoBehaviour
     }
 
 // Purely for testing, delete Update later
-    // void Update(){ 
-    //     foreach (Animator anim in animators)
-    //         anim.SetBool("isOpen", openState);
-    // }
+    void Update(){ 
+        foreach (Animator anim in animators)
+            anim.SetBool("isOpen", openState);
+    }
 
     void Open(){
         openState = true;
