@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
 {
     private int score;
     public void AddScore(int scr){
-        score = scr;
+        score += scr;
     }
     public void ResetScore(){
         score = 0;
