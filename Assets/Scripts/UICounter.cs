@@ -1,17 +1,24 @@
+using TMPro;
 using UnityEngine;
 
 public class UICounter : MonoBehaviour
 {
-    [SerializeField] private Sprite[] digitSprites;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
+    [SerializeField] private TextMeshProUGUI TMP;
+    private int spriteIdx0;
+    private int spriteIdx1;
+    private float counter;
+
+    void Start(){
+        TMP = GetComponent<TextMeshProUGUI>();
+
+        TMP.text = $"<sprite={spriteIdx0}><sprite={spriteIdx1}>";
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void SetNumber(int num){
+        counter = num;
+        spriteIdx0 = (int)counter / 10;
+        spriteIdx1 = (int)counter % 10;
+        TMP.text = $"<sprite={spriteIdx0}><sprite={spriteIdx1}>";
     }
+    
 }
