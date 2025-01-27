@@ -12,6 +12,8 @@ public class CupBahavior : MonoBehaviour
     [SerializeField] private Transform liquid;
     [SerializeField] private GameManager gm;
     
+    [SerializeField] private Tap tap;
+
     private InputAction interactAction;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -23,6 +25,7 @@ public class CupBahavior : MonoBehaviour
     // Update is called once per frame
     void Update() {
         if(interactAction.IsPressed()){
+            tap.Open();
             fill += fillSpeed * Time.deltaTime;
             liquid.transform.Translate(Vector2.up * fillSpeed * Time.deltaTime);
             if(fill > maxFill) {
@@ -30,6 +33,7 @@ public class CupBahavior : MonoBehaviour
             }
         }
         if(interactAction.WasReleasedThisFrame()){
+            tap.Close();
             if(fill > minFill && fill < maxFill){
                 Reset();
                 gm.AddScore(1);
@@ -37,7 +41,7 @@ public class CupBahavior : MonoBehaviour
         }
     }
 
-    void Reset(){
+    public void Reset(){
         fill = 0;
         liquid.localPosition = new Vector3(0, -1.87f, 0);
     }
