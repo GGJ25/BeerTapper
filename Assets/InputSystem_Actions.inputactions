@@ -38,6 +38,17 @@
                 },
                 {
                     "name": "",
+                    "id": "9883beb3-3bf5-40d2-915e-45ab094cfd22",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "8e49c111-5b56-4aa0-b769-7faac348c46d",
                     "path": "<Gyroscope>/angularVelocity/z",
                     "interactions": "",
