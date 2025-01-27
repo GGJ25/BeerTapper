@@ -1,8 +1,14 @@
 using System;
+using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private GameObject endScreenUI;
+    [SerializeField] private GameObject[] gameplayObjects;
+
+// Score
     private int score;
     public void AddScore(int scr){
         score += scr;
@@ -28,10 +34,26 @@ public class GameManager : MonoBehaviour
         return (int)timer; // This should floor it.
     }
 
+    public void StartGame(){
+        score = 0;
+        timer = timeLimit;
+        timerActive = true;
+    }
+
+    void EndGame(){
+        timerActive = false;
+        foreach (GameObject obj in gameplayObjects){
+            obj.SetActive(false);
+        }
+        endScreenUI.SetActive(true);
+        endScreenUI.GetComponent<TextMeshProUGUI>().text = $"You score {score}";
+    }
+
 
     void Update(){
+
         if(timerActive){
-            if(timer <= 0) timerActive = false;
+            if(timer <= 0) EndGame();
             timer -= 1 * Time.deltaTime;
         }
     }

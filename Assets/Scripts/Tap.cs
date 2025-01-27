@@ -17,13 +17,13 @@ public class Tap : MonoBehaviour
             anim.SetBool("isOpen", openState);
     }
 
-    void Open(){
+    public void Open(){
         openState = true;
         foreach (Animator anim in animators)
             anim.SetBool("isOpen", openState);
     }
 
-    void Close(){
+    public void Close(){
         openState = false;
         foreach (Animator anim in animators)
             anim.SetBool("isOpen", openState);
